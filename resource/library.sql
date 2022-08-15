@@ -45,12 +45,21 @@ CREATE TABLE IF NOT EXISTS `textbook` (
 -- Constraints for dumped tables
 --
 INSERT INTO `textbook` (`id`, `title`, `author_id`, `isbn`, `editor`, `publication_date`) VALUES
+
 (3, 'En as-tu vraiment besoin ?', 3, 1234567890, 'paris', '2022-08-21'),
 (5, 'Demain tu gouvernes le monde', 5, 1234567890, 'paris', '2022-08-02'),
 (8, 'Social Entrepreneurship', 5, 1234567890, 'USA', '2022-08-18'),
 (9, 'L\'effet papillon', 9, 1234567890, 'france', '2022-08-23'),
 (16, 'Liberté 45', 3, 1234567890, 'canada', '2022-08-12'),
 (21, 'Think and grow rich', 16, 1234567890, 'baham', '2022-08-19');
+
+(5, 'Demain tu gouvernes le monde', 5, 12 , ``, ``),
+(3, 'En as-tu vraiment besoin ?', 3, 21, ``, ``),
+(9, 'L effet papillon ', 9, 31, ``, ``),
+(16, 'Liberté 45 ', 3, 12, ``, ``),
+(8, 'Social Entrepreneurship', 3,32 , ``, ``),
+(21, 'Think and grow rich ', 16, 43, ``, ``);
+
 --
 -- Constraints for table `textbook`
 --
@@ -111,4 +120,16 @@ INSERT INTO `textbook` (`id`, `title`, `author_id`, `isbn`, `editor`, `publicati
 -- Constraints for table `textbook`
 --
 ALTER TABLE `textbook`
+
   ADD CONSTRAINT `textbook_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+  ADD CONSTRAINT `textbook_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+INSERT INTO `textbook` (`id`, `title`, `author_id`, `isbn`, `editor`, `publication_date`) VALUES
+(5, 'Demain tu gouvernes le monde', 5, 12 , ``, ``),
+(3, 'En as-tu vraiment besoin ?', 3, 21, ``, ``),
+(9, 'L effet papillon ', 9, 31, ``, ``),
+(16, 'Liberté 45 ', 3, 12, ``, ``),
+(8, 'Social Entrepreneurship', 3,32 , ``, ``),
+(21, 'Think and grow rich ', 16, 43, ``, ``);
+

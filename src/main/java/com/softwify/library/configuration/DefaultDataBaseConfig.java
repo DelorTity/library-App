@@ -15,7 +15,11 @@ public class DefaultDataBaseConfig extends DataBaseConfig {
 	public Connection getConnection() throws SQLException, ClassNotFoundException {
 		logger.info("Cree la connection a la base de donne");
 		Class.forName("com.mysql.cj.jdbc.Driver");
+
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/library?serverTimezone=UTC", "root",
 				"rootroot");
+
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/library?serverTimezone=UTC", "root", "rootroot");
+
 	}
 }

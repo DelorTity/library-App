@@ -34,7 +34,11 @@ public class LibraryMenu {
 					break;
 				}
 				case 2: {
+
 					textbookManager.manage();
+
+					break;
+
 				}
 				case 0: {
 					System.exit(option);

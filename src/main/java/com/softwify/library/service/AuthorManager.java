@@ -47,7 +47,11 @@ public class AuthorManager {
 					try {
 						processDelete(substring[1]);
 					} catch (ArrayIndexOutOfBoundsException e) {
+
 						logger.error("Veuillez entrer un  identifiant s'il vous plait");
+
+						logger.error("Veuillez saisir un identifiant apres \"delete.\"");
+
 					}
 					break;
 				}
@@ -71,15 +75,26 @@ public class AuthorManager {
 		}
 	}
 
+
 	public void processDelete(String inIdString){
 		try {
 			int id = Integer.parseInt(inIdString);
+
+	public void processDelete(String idInString){
+
+		try {
+			int id = Integer.parseInt(idInString);
+
 			boolean deleted = delete(id);
 			if (deleted) {
 				returnToList();
 			}
 		} catch (NumberFormatException e) {
+
 			logger.error(inIdString
+
+			logger.error(idInString
+
 					+ "n'est pas un nombre, entrer un nombre représentant l'identifiant de l'auteur !!!");
 		}
 	}
@@ -104,6 +119,7 @@ public class AuthorManager {
 
 	public void processSave() {
 		System.out.println("Ajout d'un nouvel auteur");
+
 		System.out.print("Entrez le prénom de l'auteur : ");
 		String firstName = optionSelector.readString();
 
@@ -116,6 +132,21 @@ public class AuthorManager {
 		String lastName = optionSelector.readString();
 		while (lastName.isEmpty()) {
 			logger.error("Nom incorrect, veuillez reessayer");
+
+
+		System.out.print("Entrez le prénom de l'auteur : ");
+		String firstName = optionSelector.readString();
+		while (firstName.isEmpty()) {
+			logger.error("Prenom incorrect, veuillez reeassayer\n");
+			System.out.print("Entrez le prénom de l'auteur : ");
+			firstName = optionSelector.readString();
+		}
+
+		System.out.print("Entrez le nom de l'auteur : ");
+		String lastName = optionSelector.readString();
+		while (lastName.isEmpty()) {
+			logger.error("Nom incorrect, veuillez reeassayer\n");
+
 			System.out.print("Entrez le nom de l'auteur : ");
 			lastName = optionSelector.readString();
 		}
@@ -128,10 +159,18 @@ public class AuthorManager {
 			Author addedAuthor = authorDao.save(author);
 			if (addedAuthor != null){
 				System.out.println("\nL'auteur " + author.getFullName() +" a été rajouté avec succès.\n");
+
 			} else {
 				logger.error("Une erreur est survenue lors de l'insertion");
 			}
 			returnToList();
+
+				returnToList();
+			} else {
+				logger.error("Une erreur est survenue lors de l'insertion");
+				processSave();
+			}
+
 		}
 	}
 }

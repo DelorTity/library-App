@@ -7,7 +7,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.softwify.library.model.Author;
+
 import javafx.beans.binding.When;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -45,11 +47,17 @@ class AuthorManagerTest {
 	}
 
 	@Test
+
 	public void insertAuthorSTest() {
 		String name = "liticia";
 		//Author author = new Author(1, name, name);
 		when(optionSelector.readString()).thenReturn(name);
 		//when(authorDao.save(any(Author.class))).thenReturn(author);
+
+	public void insertAuthorShouldReturnTrueWhenDaoReturnTrue() {
+		String name = "liticia";
+		when(optionSelector.readString()).thenReturn(name);
+
 		authorManager.processSave();
 		verify(authorDao, times(1)).save(any(Author.class));
 		verify(authorDao, times(1)).checkExistingAuthor(any(Author.class));
