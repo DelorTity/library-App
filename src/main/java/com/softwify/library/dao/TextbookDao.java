@@ -105,7 +105,6 @@ public class TextbookDao {
             preparedStatement.setInt(3, textbook.getIsbn());
             preparedStatement.setString(4, textbook.getEditor());
             java.util.Date publicationDate = textbook.getPublicationDate();
-        //    java.util.Date utilPackageDate = new java.util.Date();
             java.sql.Date sqlPackageDate = new java.sql.Date(publicationDate.getTime());
             preparedStatement.setDate(5, sqlPackageDate);
             preparedStatement.executeUpdate();
@@ -126,7 +125,7 @@ public class TextbookDao {
 
     public boolean checkExistingAuthor(Author author) {
         Connection connection = null;
-        boolean isAuthorExist = false;
+        boolean isAuthorExisting = false;
         try {
             connection = dataBaseConfig.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DBConstants.CHECK_IF_AUTHOR_EXIST);
@@ -135,7 +134,7 @@ public class TextbookDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 int count = resultSet.getInt(1);
-                isAuthorExist = count > 0;
+                isAuthorExisting = count > 0;
             }
             dataBaseConfig.closeResultSet(resultSet);
             dataBaseConfig.closePreparedStatement(preparedStatement);
@@ -145,7 +144,7 @@ public class TextbookDao {
             dataBaseConfig.closeConnection(connection);
         }
 
-        return isAuthorExist;
+        return isAuthorExisting;
     }
 
     public Textbook getValidTextbook(String firstName, String lastName) {
