@@ -17,11 +17,11 @@ CREATE TABLE IF NOT EXISTS `author` (
 -- Dumping data for table `author`
 --
 
-INSERT INTO `author` (`id`, `lastname`, `firstname`) VALUES
-(3, 'Mcsween', 'Pierre-Yves'),
-(5, 'Niang', 'Thione'),
-(9, 'Djomo', 'Wilfried'),
-(16, 'Hill', 'Napoleon');
+INSERT INTO `author` (`lastname`, `firstname`) VALUES
+('Mcsween', 'Pierre-Yves'),
+('Niang', 'Thione'),
+('Djomo', 'Wilfried'),
+('Hill', 'Napoleon');
 
 -- --------------------------------------------------------
 

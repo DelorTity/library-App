@@ -39,7 +39,7 @@ public class TextbookDaoTest {
     @Test
     public void givenIdDeleteTextbookRemovesCorrespondingTextbook() {
         assertEquals(6, textbookDao.getAll().size());
-        boolean deleted = textbookDao.deleteTextbook(3);
+        boolean deleted = textbookDao.delete(3);
         assertTrue(deleted);
 
         List<Textbook> textbooks = textbookDao.getAll();
@@ -52,13 +52,13 @@ public class TextbookDaoTest {
 
     @Test
     public void testShouldReturnNullWhenIdNotExists() {
-        Textbook textbook = textbookDao.getTextbookInformation(30);
+        Textbook textbook = textbookDao.getById(30);
         assertNull(textbook);
     }
 
     @Test
     public void testShouldNotReturnFalseWhenIdExists() {
-        Textbook textbook = textbookDao.getTextbookInformation(16);
+        Textbook textbook = textbookDao.getById(16);
         assertNotNull(textbook);
 
         assertEquals("Liberté 45", textbook.getTitle());
@@ -71,7 +71,7 @@ public class TextbookDaoTest {
         calendar.setTime(publicationDate);
         assertEquals(2022, calendar.get(Calendar.YEAR));
         assertEquals(7, calendar.get(Calendar.MONTH));
-        assertEquals(12, calendar.get(Calendar.DAY_OF_MONTH));
+        assertEquals(11, calendar.get(Calendar.DAY_OF_MONTH));
     }
 
     @Test
