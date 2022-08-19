@@ -92,7 +92,7 @@ public class TextbookManager {
     }
 
     public boolean delete(int id) {
-        boolean result = textbookDao.deleteTextbook(id);
+        boolean result = textbookDao.delete(id);
         if (result) {
             System.out.println("Le livre a été supprimé avec succès.");
         } else {
@@ -103,7 +103,7 @@ public class TextbookManager {
     }
 
     public boolean readTextbook(int id) {
-        Textbook textbook = textbookDao.getTextbookInformation(id);
+        Textbook textbook = textbookDao.getById(id);
         if (textbook == null) {
             return false;
         }

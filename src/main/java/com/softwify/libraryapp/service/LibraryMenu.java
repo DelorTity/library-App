@@ -1,12 +1,14 @@
 package com.softwify.libraryapp.service;
 
-import com.softwify.libraryapp.dao.TextbookDao;
+import com.softwify.libraryapp.dao.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.softwify.libraryapp.configuration.DataBaseConfig;
 import com.softwify.libraryapp.configuration.DefaultDataBaseConfig;
-import com.softwify.libraryapp.dao.AuthorDao;
 import com.softwify.libraryapp.util.OptionSelector;
 
 public class LibraryMenu {
@@ -14,7 +16,10 @@ public class LibraryMenu {
 
 	private static final OptionSelector optionSelector = new OptionSelector();
 	private static final DataBaseConfig dataBaseConfig = new DefaultDataBaseConfig();
-	private static final AuthorDao authorDao = new AuthorDao(dataBaseConfig);
+    private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("library-app-pu");
+    private static final EntityManager entityManager = entityManagerFactory.createEntityManager();
+    private static final AuthorDao authorDao = new JpaAuthorDao(entityManager);
+//	private static final AuthorDao authorDao = new NativeJdbcAuthorDao(dataBaseConfig);
 	private static final TextbookDao textbookDao = new TextbookDao(dataBaseConfig);
 	private static final AuthorManager authorManager = new AuthorManager(authorDao, optionSelector);
 	private static final TextbookManager textbookManager = new TextbookManager(textbookDao, optionSelector, authorDao);

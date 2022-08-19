@@ -46,7 +46,7 @@ public class TextbookDao {
         return textbooks;
     }
 
-    public boolean deleteTextbook (int id) {
+    public boolean delete(int id) {
         Connection connection = null;
         boolean deleted = false;
         try {
@@ -65,7 +65,7 @@ public class TextbookDao {
         return deleted;
     }
 
-    public Textbook getTextbookInformation(int id) {
+    public Textbook getById(int id) {
         Connection connection = null;
         Textbook textbook = null;
         try {

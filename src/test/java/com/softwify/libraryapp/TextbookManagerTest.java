@@ -32,34 +32,34 @@ public class TextbookManagerTest {
 
     @Test
     public void deleteTextbookShouldReturnFalseWhenDaoReturnFalse() {
-        when(textbookDao.deleteTextbook(anyInt())).thenReturn(false);
+        when(textbookDao.delete(anyInt())).thenReturn(false);
 
         boolean deleted = textbookManager.delete(5);
         assertFalse(deleted);
-        verify(textbookDao, times(1)).deleteTextbook(5);
+        verify(textbookDao, times(1)).delete(5);
     }
 
     @Test
     public void deleteTextbookShouldReturnTrueWhenDaoReturnTrue() {
-        when(textbookDao.deleteTextbook(anyInt())).thenReturn(true);
+        when(textbookDao.delete(anyInt())).thenReturn(true);
         boolean deleted = textbookManager.delete(5);
         assertTrue(deleted);
-        verify(textbookDao, times(1)).deleteTextbook(5);
+        verify(textbookDao, times(1)).delete(5);
     }
 
     @Test
     public void testShouldReturnTrueWhenTextbookIsDisplayed() {
         Textbook textbook = new Textbook(6, "titre propre", "delor", "tity", 5, 1234, "USA", new Date());
-        when(textbookDao.getTextbookInformation(6)).thenReturn(textbook);
+        when(textbookDao.getById(6)).thenReturn(textbook);
         assertTrue(textbookManager.readTextbook(6));
-        verify(textbookDao, times(1)).getTextbookInformation(6);
+        verify(textbookDao, times(1)).getById(6);
     }
 
     @Test
     public void testShouldReturnFalseWhenTextbookIsNotDisplayed() {
-        when(textbookDao.getTextbookInformation(5)).thenReturn(null);
+        when(textbookDao.getById(5)).thenReturn(null);
         assertFalse(textbookManager.readTextbook(5));
-        verify(textbookDao, times(1)).getTextbookInformation(5);
+        verify(textbookDao, times(1)).getById(5);
     }
 
     @Test
@@ -67,7 +67,6 @@ public class TextbookManagerTest {
         when(optionSelector.readString()).thenReturn("Thione Niang");
         when(optionSelector.readInt()).thenReturn(569);
         when(optionSelector.readDate()).thenReturn("02-03-2020");
-        when(authorDao.checkExistingAuthor(any())).thenReturn(true);
         when(authorDao.getByFirstNameAndLastName(any(), any())).thenReturn(new Author(1, "Thione", "Niang"));
         textbookManager.processAdd();
 

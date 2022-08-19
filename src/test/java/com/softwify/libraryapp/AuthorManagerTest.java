@@ -23,24 +23,24 @@ class AuthorManagerTest {
 	@Test
 	public void testDisplayAuthors() {
 		authorManager.displayAuthors();
-		verify(authorDao, times(1)).getAuthors();
+		verify(authorDao, times(1)).getAll();
 	}
 
 	@Test
 	public void deleteAuthorShouldReturnFalseWhenDaoReturnFalse() {
-		when(authorDao.deleteAuthor(anyInt())).thenReturn(false);
+		when(authorDao.delete(anyInt())).thenReturn(false);
 
 		boolean deleted = authorManager.delete(10);
 		assertFalse(deleted);
-		verify(authorDao, times(1)).deleteAuthor(10);
+		verify(authorDao, times(1)).delete(10);
 	}
 
 	@Test
 	public void deleteAuthorShouldReturnTrueWhenDaoReturnTrue() {
-		when(authorDao.deleteAuthor(anyInt())).thenReturn(true);
+		when(authorDao.delete(anyInt())).thenReturn(true);
 		boolean deleted = authorManager.delete(10);
 		assertTrue(deleted);
-		verify(authorDao, times(1)).deleteAuthor(10);
+		verify(authorDao, times(1)).delete(10);
 	}
 
 	@Test
@@ -51,6 +51,6 @@ class AuthorManagerTest {
 		//when(authorDao.save(any(Author.class))).thenReturn(author);
 		authorManager.processSave();
 		verify(authorDao, times(1)).save(any(Author.class));
-		verify(authorDao, times(1)).checkExistingAuthor(any(Author.class));
+		verify(authorDao, times(1)).getByFirstNameAndLastName(any(String.class), any(String.class));
 	}
 }

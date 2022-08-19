@@ -64,7 +64,7 @@ public class AuthorManager {
 	}
 
 	public void displayAuthors() {
-		List<Author> authors = authorDao.getAuthors();
+		List<Author> authors = authorDao.getAll();
 
 		System.out.println("Liste des auteurs");
 		for (Author author : authors) {
@@ -87,7 +87,7 @@ public class AuthorManager {
 	}
 
 	public boolean delete(int id) {
-		boolean result = authorDao.deleteAuthor(id);
+		boolean result = authorDao.delete(id);
 
 		if (result) {
 			System.out.println("L'auteur et ses livres ont ete supprimes avec succes.");
@@ -124,23 +124,21 @@ public class AuthorManager {
 			lastName = optionSelector.readString();
 		}
 
-		Author author = new Author(firstName, lastName);
-		if (authorDao.checkExistingAuthor(author)) {
-			logger.error("\nL'auteur " + author.getFullName() +" existe déjà.\nVeuillez reprendre s'il vous plaît.\n");
-			processSave();
-		} else {
-			Author addedAuthor = authorDao.save(author);
-			if (addedAuthor != null){
-				System.out.println("\nL'auteur " + author.getFullName() +" a été rajouté avec succès.\n");
+        Author existingAuthor = authorDao.getByFirstNameAndLastName(firstName, lastName);
+        if (existingAuthor != null) {
+            logger.error("\nL'auteur " + existingAuthor.getFullName() + " existe déjà.\nVeuillez reprendre s'il vous plaît.\n");
+            processSave();
+        } else {
+            Author author = new Author(firstName, lastName);
+            Author addedAuthor = authorDao.save(author);
+            if (addedAuthor != null) {
+                System.out.println("\nL'auteur " + author.getFullName() + " a été rajouté avec succès.\n");
 
 			} else {
 				logger.error("Une erreur est survenue lors de l'insertion");
 			}
 			returnToList();
 
-			}
-
-
-
-	}
+        }
+    }
 }

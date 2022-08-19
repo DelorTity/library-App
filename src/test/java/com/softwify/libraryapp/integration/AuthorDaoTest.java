@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import com.softwify.libraryapp.dao.NativeJdbcAuthorDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ import com.softwify.libraryapp.model.Author;
 public class AuthorDaoTest {
 
 	DataBaseConfig dataBaseConfig = new DataBaseConfigTest();
-	AuthorDao authorDao = new AuthorDao(dataBaseConfig);
+	AuthorDao authorDao = new NativeJdbcAuthorDao(dataBaseConfig);
 	DataBasePrepareService dataBasePrepareService = new DataBasePrepareService();
 
 	@BeforeEach
@@ -26,7 +27,7 @@ public class AuthorDaoTest {
 
 	@Test
 	public void getAuthorsReturnsExpectedSizeAndAuthorsOrderByFullName() {
-		List<Author> authors = authorDao.getAuthors();
+		List<Author> authors = authorDao.getAll();
 		assertEquals("Napoleon Hill", authors.get(0).getFullName());
 		assertEquals("Pierre-Yves Mcsween", authors.get(1).getFullName());
 		assertEquals("Thione Niang", authors.get(2).getFullName());
@@ -36,11 +37,11 @@ public class AuthorDaoTest {
 
 	@Test
 	public void givenIdDeleteAuthorRemovesCorrespondingAuthor() {
-		assertEquals(4, authorDao.getAuthors().size());
-		boolean deleted = authorDao.deleteAuthor(3);
+		assertEquals(4, authorDao.getAll().size());
+		boolean deleted = authorDao.delete(3);
 		assertTrue(deleted);
 
-		List<Author> authors = authorDao.getAuthors();
+		List<Author> authors = authorDao.getAll();
 		assertEquals(3, authors.size());
 
 		for (Author author : authors) {
@@ -57,21 +58,19 @@ public class AuthorDaoTest {
 	public void insertAuthor() {
 		Author authorAdd = new Author("liti", "kouam");
 		authorDao.save(authorAdd);
-		assertEquals(5, authorDao.getAuthors().size());
+		assertEquals(5, authorDao.getAll().size());
 	}
 
 	@Test
 	public void checkAuthorAlreadyExist() {
-		Author author = new Author("Thione", "Niang");
-		boolean check = authorDao.checkExistingAuthor(author);
-		assertTrue(check);
+		Author author = authorDao.getByFirstNameAndLastName("Thione", "Niang");
+		assertNotNull(author);
 	}
 
 	@Test
 	public void checkAuthorIsNotAlreadyExist() {
-		Author author = new Author("anze", "Niang");
-		boolean check = authorDao.checkExistingAuthor(author);
-		assertFalse(check);
+		Author author = authorDao.getByFirstNameAndLastName("Anze", "Niang");
+		assertNull(author);
 	}
 
 }
