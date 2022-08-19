@@ -1,4 +1,4 @@
-package com.softwify.libraryAPP.dao;
+package com.softwify.libraryapp.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -7,9 +7,9 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.softwify.libraryAPP.configuration.DataBaseConfig;
-import com.softwify.libraryAPP.constants.Queries;
-import com.softwify.libraryAPP.model.Author;
+import com.softwify.libraryapp.configuration.DataBaseConfig;
+import com.softwify.libraryapp.constants.Queries;
+import com.softwify.libraryapp.model.Author;
 
 public class AuthorDao {
 	private static final Logger logger = LogManager.getLogger(AuthorDao.class.getSimpleName());

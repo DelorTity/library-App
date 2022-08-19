@@ -1,13 +1,13 @@
-package com.softwify.libraryAPP.service;
+package com.softwify.libraryapp.service;
 
-import com.softwify.libraryAPP.dao.TextbookDao;
+import com.softwify.libraryapp.dao.TextbookDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.softwify.libraryAPP.configuration.DataBaseConfig;
-import com.softwify.libraryAPP.configuration.DefaultDataBaseConfig;
-import com.softwify.libraryAPP.dao.AuthorDao;
-import com.softwify.libraryAPP.util.OptionSelector;
+import com.softwify.libraryapp.configuration.DataBaseConfig;
+import com.softwify.libraryapp.configuration.DefaultDataBaseConfig;
+import com.softwify.libraryapp.dao.AuthorDao;
+import com.softwify.libraryapp.util.OptionSelector;
 
 public class LibraryMenu {
 	private static final Logger logger = LogManager.getLogger(LibraryMenu.class.getSimpleName());

@@ -1,10 +1,10 @@
-package com.softwify.libraryAPP.service;
+package com.softwify.libraryapp.service;
 
-import com.softwify.libraryAPP.dao.AuthorDao;
-import com.softwify.libraryAPP.dao.TextbookDao;
-import com.softwify.libraryAPP.model.Author;
-import com.softwify.libraryAPP.model.Textbook;
-import com.softwify.libraryAPP.util.OptionSelector;
+import com.softwify.libraryapp.dao.AuthorDao;
+import com.softwify.libraryapp.dao.TextbookDao;
+import com.softwify.libraryapp.model.Author;
+import com.softwify.libraryapp.model.Textbook;
+import com.softwify.libraryapp.util.OptionSelector;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

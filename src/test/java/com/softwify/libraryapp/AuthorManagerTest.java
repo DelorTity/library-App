@@ -1,4 +1,4 @@
-package com.softwify.libraryAPP;
+package com.softwify.libraryapp;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
@@ -6,13 +6,13 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.softwify.libraryAPP.model.Author;
+import com.softwify.libraryapp.model.Author;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.softwify.libraryAPP.dao.AuthorDao;
-import com.softwify.libraryAPP.service.AuthorManager;
-import com.softwify.libraryAPP.util.OptionSelector;
+import com.softwify.libraryapp.dao.AuthorDao;
+import com.softwify.libraryapp.service.AuthorManager;
+import com.softwify.libraryapp.util.OptionSelector;
 
 class AuthorManagerTest {
 

@@ -1,4 +1,4 @@
-package com.softwify.libraryAPP.util;
+package com.softwify.libraryapp.util;
 
 import java.util.Scanner;
 

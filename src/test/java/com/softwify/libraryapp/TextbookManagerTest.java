@@ -1,12 +1,12 @@
-package com.softwify.libraryAPP;
+package com.softwify.libraryapp;
 
 
-import com.softwify.libraryAPP.dao.AuthorDao;
-import com.softwify.libraryAPP.dao.TextbookDao;
-import com.softwify.libraryAPP.model.Author;
-import com.softwify.libraryAPP.model.Textbook;
-import com.softwify.libraryAPP.service.TextbookManager;
-import com.softwify.libraryAPP.util.OptionSelector;
+import com.softwify.libraryapp.dao.AuthorDao;
+import com.softwify.libraryapp.dao.TextbookDao;
+import com.softwify.libraryapp.model.Author;
+import com.softwify.libraryapp.model.Textbook;
+import com.softwify.libraryapp.service.TextbookManager;
+import com.softwify.libraryapp.util.OptionSelector;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

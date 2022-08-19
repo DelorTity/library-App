@@ -1,4 +1,4 @@
-package com.softwify.libraryAPP.constants;
+package com.softwify.libraryapp.constants;
 
 public class Queries {
 	public static final String GET_AUTHORS = "select * from author order by firstname, lastname";

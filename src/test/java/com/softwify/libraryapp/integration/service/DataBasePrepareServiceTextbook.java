@@ -1,6 +1,6 @@
-package com.softwify.libraryAPP.integration.service;
+package com.softwify.libraryapp.integration.service;
 
-import com.softwify.libraryAPP.integration.config.DataBaseConfigTest;
+import com.softwify.libraryapp.integration.config.DataBaseConfigTest;
 
 import java.sql.Connection;
 

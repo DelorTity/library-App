@@ -1,8 +1,8 @@
-package com.softwify.libraryAPP.dao;
+package com.softwify.libraryapp.dao;
 
-import com.softwify.libraryAPP.configuration.DataBaseConfig;
-import com.softwify.libraryAPP.constants.Queries;
-import com.softwify.libraryAPP.model.Textbook;
+import com.softwify.libraryapp.configuration.DataBaseConfig;
+import com.softwify.libraryapp.constants.Queries;
+import com.softwify.libraryapp.model.Textbook;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

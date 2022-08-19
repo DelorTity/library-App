@@ -1,13 +1,13 @@
-package com.softwify.libraryAPP.service;
+package com.softwify.libraryapp.service;
 
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.softwify.libraryAPP.dao.AuthorDao;
-import com.softwify.libraryAPP.model.Author;
-import com.softwify.libraryAPP.util.OptionSelector;
+import com.softwify.libraryapp.dao.AuthorDao;
+import com.softwify.libraryapp.model.Author;
+import com.softwify.libraryapp.util.OptionSelector;
 
 public class AuthorManager {
 
@@ -34,7 +34,7 @@ public class AuthorManager {
 
 			String input = optionSelector.readString();
 			input = input.trim().replaceAll("\\s+", " ");
-			String substring[] = input.split(" ");
+			String[] substring = input.split(" ");
 			String option = substring[0];
 
 			switch (option) {

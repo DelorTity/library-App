@@ -1,10 +1,10 @@
-package com.softwify.libraryAPP.integration;
+package com.softwify.libraryapp.integration;
 
-import com.softwify.libraryAPP.configuration.DataBaseConfig;
-import com.softwify.libraryAPP.dao.TextbookDao;
-import com.softwify.libraryAPP.integration.config.DataBaseConfigTest;
-import com.softwify.libraryAPP.integration.service.DataBasePrepareServiceTextbook;
-import com.softwify.libraryAPP.model.Textbook;
+import com.softwify.libraryapp.configuration.DataBaseConfig;
+import com.softwify.libraryapp.dao.TextbookDao;
+import com.softwify.libraryapp.integration.config.DataBaseConfigTest;
+import com.softwify.libraryapp.integration.service.DataBasePrepareServiceTextbook;
+import com.softwify.libraryapp.model.Textbook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

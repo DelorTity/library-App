@@ -1,4 +1,4 @@
-package com.softwify.libraryAPP.model;
+package com.softwify.libraryapp.model;
 
 public class Author {
 	private int id;
