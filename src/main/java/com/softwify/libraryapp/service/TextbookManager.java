@@ -87,7 +87,8 @@ public class TextbookManager {
 
         System.out.println("Liste des livres");
         for (Textbook textbook : textbooks) {
-            System.out.println(textbook.getId() + " - " + textbook.getTitle() + " - " + textbook.getFullName());
+            System.out.println(textbook.getId() + " - " + textbook.getTitle());
+//            System.out.println(textbook.getId() + " - " + textbook.getTitle() + " - " + textbook.getFullName());
         }
     }
 
@@ -108,7 +109,7 @@ public class TextbookManager {
             return false;
         }
         System.out.println("Titre : " + textbook.getTitle());
-        System.out.println("Auteur : " + textbook.getFullName());
+//        System.out.println("Auteur : " + textbook.getFullName());
         System.out.println("ISBN : " + textbook.getIsbn());
         System.out.println("Editeur : " + textbook.getEditor());
         System.out.println("Année de publication : " + textbook.getPublicationDate());
@@ -136,7 +137,7 @@ public class TextbookManager {
                 returnToList();
             }
         } catch (NumberFormatException e) {
-            logger.error(idInString + "n'est pas un nombre, entrer un nombre représentant l'identifiant de l'auteur !!!");
+            logger.error(idInString + " n'est pas un nombre, entrer un nombre représentant l'identifiant de l'auteur !!!");
         }
     }
 
@@ -177,6 +178,7 @@ public class TextbookManager {
         if(author.getFirstName() != null && author.getLastName() != null){
             Author existingAuthor = authorDao.getByFirstNameAndLastName(author.getFirstName(), author.getLastName());
             if(existingAuthor != null) {
+                System.out.println("Ajout d'un livre pour " + author.getFullName());
                 Textbook textbook = retrieveBookInformation(existingAuthor.getId());
                 saveBook(textbook);
             } else {
@@ -200,7 +202,6 @@ public class TextbookManager {
     }
 
     public Textbook retrieveBookInformation(int authorId) throws ParseException {
-
         System.out.print("Quel est le titre ? : ");
         String title = optionSelector.readString();
         while (title.isEmpty()) {

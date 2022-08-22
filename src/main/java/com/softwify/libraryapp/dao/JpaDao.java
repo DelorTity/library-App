@@ -4,7 +4,7 @@ import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
-public class JpaDao<T> {
+public abstract class JpaDao<T> {
 
     private final Class<T> clazz;
     private final String entityName;

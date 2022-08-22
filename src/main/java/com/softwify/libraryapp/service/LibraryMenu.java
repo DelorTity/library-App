@@ -15,12 +15,11 @@ public class LibraryMenu {
 	private static final Logger logger = LogManager.getLogger(LibraryMenu.class.getSimpleName());
 
 	private static final OptionSelector optionSelector = new OptionSelector();
-	private static final DataBaseConfig dataBaseConfig = new DefaultDataBaseConfig();
+	public static final DataBaseConfig dataBaseConfig = new DefaultDataBaseConfig();
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("library-app-pu");
     private static final EntityManager entityManager = entityManagerFactory.createEntityManager();
     private static final AuthorDao authorDao = new JpaAuthorDao(entityManager);
-//	private static final AuthorDao authorDao = new NativeJdbcAuthorDao(dataBaseConfig);
-	private static final TextbookDao textbookDao = new TextbookDao(dataBaseConfig);
+	private static final TextbookDao textbookDao = new NativeJdbcTextbookDao();
 	private static final AuthorManager authorManager = new AuthorManager(authorDao, optionSelector);
 	private static final TextbookManager textbookManager = new TextbookManager(textbookDao, optionSelector, authorDao);
 
