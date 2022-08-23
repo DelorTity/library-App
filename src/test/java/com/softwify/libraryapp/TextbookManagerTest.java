@@ -49,7 +49,7 @@ public class TextbookManagerTest {
 
     @Test
     public void testShouldReturnTrueWhenTextbookIsDisplayed() {
-        Textbook textbook = new Textbook(6, "titre propre", "delor", "tity", 5, 1234, "USA", new Date());
+        Textbook textbook = new Textbook(6, "titre propre", 5, 1234, "USA", new Date());
         when(textbookDao.getById(6)).thenReturn(textbook);
         assertTrue(textbookManager.readTextbook(6));
         verify(textbookDao, times(1)).getById(6);

@@ -1,16 +1,20 @@
 package com.softwify.libraryapp.model;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "textbook")
 public class Textbook {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String title;
     private int authorId;
     private int isbn;
     private String editor;
     private Date publicationDate;
-    private String authorFirstName;
-    private String authorFastName;
 
     public Textbook(int id, String title, int authorId, int isbn, String editor, Date publicationDate) {
         this.id = id;
@@ -19,46 +23,6 @@ public class Textbook {
         this.isbn = isbn;
         this.editor = editor;
         this.publicationDate = publicationDate;
-    }
-
-    public Textbook(int id, int authorId, String title, int isbn, String editor, Date publicationDate) {
-        this.id = id;
-        this.title = title;
-        this.isbn = isbn;
-        this.editor = editor;
-        this.publicationDate = publicationDate;
-        this.authorId = authorId;
-    }
-
-    public Textbook(int id, String title, String firstName, String lastName, int authorId, int isbn, String editor, Date publicationDate) {
-        this.title = title;
-        this.id = id;
-        this.authorFirstName = firstName;
-        this.authorFastName = lastName;
-        this.authorId = authorId;
-        this.isbn = isbn;
-        this.editor = editor;
-        this.publicationDate = publicationDate;
-    }
-
-    public Textbook(int id, String title, String firstName, String lastName) {
-        this.id = id;
-        this.title = title;
-        this.authorFirstName = firstName;
-        this.authorFastName = lastName;
-    }
-
-    public Textbook(String title, String authorFirstname, String authorLastname, int isbn, String editor, java.sql.Date publicationDate) {
-        this.title = title;
-        this.authorFirstName = authorFirstname;
-        this.authorFastName = authorLastname;
-        this.isbn = isbn;
-        this.editor = editor;
-        this.publicationDate = publicationDate;
-    }
-
-    public Textbook(int id) {
-        this.id = id;
     }
 
     public int getId() {
@@ -107,25 +71,5 @@ public class Textbook {
 
     public void setPublicationDate(Date publicationDate) {
         this.publicationDate = publicationDate;
-    }
-
-    public String getAuthorFirstName() {
-        return authorFirstName;
-    }
-
-    public void setAuthorFirstName(String authorFirstName) {
-        this.authorFirstName = authorFirstName;
-    }
-
-    public String getAuthorLastName() {
-        return authorFastName;
-    }
-
-    public void setAuthorFastName(String authorFastName) {
-        this.authorFastName = authorFastName;
-    }
-
-    public String getFullName() {
-        return authorFirstName + " " + authorFastName;
     }
 }
